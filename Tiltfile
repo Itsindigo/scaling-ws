@@ -1,13 +1,5 @@
 load("ext://restart_process", "docker_build_with_restart")
 
-docker_build(
-    "scaling-ws/go-base",
-    context=".",
-    dockerfile="base.dockerfile",
-    only=["./apps/ws-server/go.mod", "./apps/ws-server/go.sum"],
-)
-
-
 docker_build_with_restart(
     "scaling-ws/ws-server",
     context=".",
@@ -16,7 +8,7 @@ docker_build_with_restart(
     only=["./apps/ws-server"],
     live_update=[
         sync("./apps/ws-server", "/app"),
-        run("go build -mod=vendor -o /usr/local/bin/run-ws-server /app"),
+        run("go build -mod=vendor -o /usr/local/bin/run-ws-server /app/cmd/run-server"),
     ],
 )
 
