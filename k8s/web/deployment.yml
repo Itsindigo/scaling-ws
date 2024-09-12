@@ -1,19 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ws-server
+  name: web
+  labels:
+    app: web
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ws-server
+      app: web
   template:
     metadata:
       labels:
-        app: ws-server
+        app: web
     spec:
       containers:
-        - name: ws-server
-          image: scaling-ws/ws-server
+        - name: web
+          image: scaling-ws/web
           ports:
-            - containerPort: 8080
+            - containerPort: 3000

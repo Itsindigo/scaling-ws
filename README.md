@@ -1,5 +1,6 @@
 # About
 
+Start a minikbe cluster:
 ```
 minikube start \
   --memory=4096 \
@@ -8,4 +9,10 @@ minikube start \
   --kubernetes-version=v1.30.0 \
   --driver=docker \
   --profile=scaling-ws
+```
+
+
+Build services using Tilt:
+```
+tilt up
 ```
