@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ws-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ws-server
+  template:
+    metadata:
+      labels:
+        app: ws-server
+    spec:
+      containers:
+        - name: ws-server
+          image: scaling-ws/ws-server
+          ports:
+            - containerPort: 8080
