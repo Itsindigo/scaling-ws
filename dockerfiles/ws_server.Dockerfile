@@ -4,7 +4,7 @@ WORKDIR /app
 
 ENV GOMODCACHE=/cache/gomod
 ENV GOCACHE=/cache/gobuild
-COPY ./apps/ws-server/go.mod ./
+COPY ./apps/ws-server/go.mod ./apps/ws-server/go.sum ./
 
 RUN --mount=type=cache,target=/cache/gomod \
     go mod download
